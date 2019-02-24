@@ -1,6 +1,8 @@
 <?php
 
-class InvoiceController
+declare(strict_types=1);
+
+final class InvoiceController
 {
     private $invoiceGenerator;
 
@@ -9,11 +11,11 @@ class InvoiceController
         $this->invoiceGenerator = $invoiceGenerator;
     }
 
-    public function generateAction(int $id)
+    public function generateAction(string $id)
     {
-        $this->invoiceGenerator->generateFor(new Customer($id));
+        $this->invoiceGenerator->generateFor(new CustomerId($id));
 
-        //return some response
+        //...
     }
 }
 

@@ -1,6 +1,8 @@
 <?php
 
-class GenerateInvoiceCommand
+declare(strict_types=1);
+
+final class GenerateInvoiceCommand
 {
     private $invoiceGenerator;
 
@@ -12,10 +14,12 @@ class GenerateInvoiceCommand
     public function execute(InputInterface $input)
     {
         $this->invoiceGenerator->generateFor(
-            new Customer(
+            new CustomerId(
                 $input->getArgument('id')
             )
         );
+
+        //...
     }
 }
 

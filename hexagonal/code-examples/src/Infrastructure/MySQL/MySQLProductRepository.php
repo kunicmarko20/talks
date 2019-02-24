@@ -1,6 +1,8 @@
 <?php
 
-class MySQLProductRepository implements ProductRepository
+declare(strict_types=1);
+
+final class MySQLProductRepository implements ProductRepository
 {
     private $connection;
 
@@ -9,7 +11,7 @@ class MySQLProductRepository implements ProductRepository
         $this->connection = $connection;
     }
 
-    public function getProductsFor(Customer $customer): array
+    public function getProductsFor(CustomerId $customerId): array
     {
         $statement = $this->connection->prepare(
             <<<SQL
@@ -19,12 +21,13 @@ WHERE customer_id = :customer_id
 SQL
         );
 
-        $statement->bindValue('customer_id', $customer->id(), \PDO::PARAM_INT);
+        $statement->bindValue('customer_id', $customerId->toString());
 
         $statement->execute();
 
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
+
 
 

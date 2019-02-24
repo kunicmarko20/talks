@@ -1,7 +1,12 @@
 <?php
 
-class InMemoryProductRepository implements ProductRepository
+declare(strict_types=1);
+
+final class InMemoryProductRepository implements ProductRepository
 {
+    /**
+     * @var Product[]
+     */
     private $products;
 
     public function __construct(array $products = [])
@@ -9,10 +14,19 @@ class InMemoryProductRepository implements ProductRepository
         $this->products = $products;
     }
 
-    public function getProductsFor(Customer $customer): array
+    public function getProductsFor(CustomerId $customerId): array
     {
-        return $this->products[$customer->id()];
+        $products = [];
+
+        foreach ($this->products as $product) {
+            if ($customerId->equals($product->customerId())) {
+                $products[] = $product;
+            }
+        }
+
+        return $products;
     }
 }
+
 
 

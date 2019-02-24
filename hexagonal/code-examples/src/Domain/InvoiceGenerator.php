@@ -1,6 +1,8 @@
 <?php
 
-class InvoiceGenerator
+declare(strict_types=1);
+
+final class InvoiceGenerator
 {
     private $productRepository;
 
@@ -9,11 +11,11 @@ class InvoiceGenerator
         $this->productRepository = $productRepository;
     }
 
-    public function generateFor(Customer $customer)
+    public function generateFor(CustomerId $customerId)
     {
-        $products = $this->productRepository->getProductsFor($customer);
+        $products = $this->productRepository->getProductsFor($customerId);
 
-        //do your invoice logic
+        //...
     }
 }
 

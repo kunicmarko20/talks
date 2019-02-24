@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Infrastructure\MySQL;
 
-use Domain\Customer;
+use Domain\CustomerId;
 
-class MySQLProductRepository
+final class MySQLProductRepository
 {
     private $connection;
 
@@ -13,7 +15,7 @@ class MySQLProductRepository
         $this->connection = $connection;
     }
 
-    public function getProductsFor(Customer $customer): array
+    public function getProductsFor(CustomerId $customerId): array
     {
         $statement = $this->connection->prepare(
             <<<SQL
@@ -23,7 +25,7 @@ WHERE customer_id = :customer_id
 SQL
         );
 
-        $statement->bindValue('customer_id', $customer->id(), \PDO::PARAM_INT);
+        $statement->bindValue('customer_id', $customerId->toString());
 
         $statement->execute();
 
