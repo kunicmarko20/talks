@@ -6,9 +6,9 @@ namespace Infrastructure\InMemory;
 
 use Domain\CustomerId;
 use Domain\Product;
-use Domain\ProductRepository;
+use Domain\Products;
 
-final class InMemoryProductRepository implements ProductRepository
+final class InMemoryProducts implements Products
 {
     /**
      * @var Product[]

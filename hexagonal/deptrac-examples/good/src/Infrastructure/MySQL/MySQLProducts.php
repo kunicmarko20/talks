@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Infrastructure\MySQL;
 
 use Domain\CustomerId;
-use Domain\ProductRepository;
+use Domain\Products;
 
-final class MySQLProductRepository implements ProductRepository
+final class MySQLProducts implements Products
 {
     private $connection;
 

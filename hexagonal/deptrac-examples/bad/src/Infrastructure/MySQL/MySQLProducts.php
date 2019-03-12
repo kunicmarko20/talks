@@ -6,7 +6,7 @@ namespace Infrastructure\MySQL;
 
 use Domain\CustomerId;
 
-final class MySQLProductRepository
+final class MySQLProducts
 {
     private $connection;
 

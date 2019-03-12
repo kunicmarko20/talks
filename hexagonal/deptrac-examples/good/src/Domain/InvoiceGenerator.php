@@ -8,7 +8,7 @@ final class InvoiceGenerator
 {
     private $productRepository;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(Products $productRepository)
     {
         $this->productRepository = $productRepository;
     }

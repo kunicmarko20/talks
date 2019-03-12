@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-final class InMemoryProductRepository implements ProductRepository
+final class InMemoryProducts implements Products
 {
     /**
      * @var Product[]
@@ -14,7 +14,7 @@ final class InMemoryProductRepository implements ProductRepository
         $this->products = $products;
     }
 
-    public function getProductsFor(CustomerId $customerId): array
+    public function belongingTo(CustomerId $customerId): array
     {
         $products = [];
 

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 final class InvoiceGenerator
 {
-    private $productRepository;
+    private $products;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(Products $products)
     {
-        $this->productRepository = $productRepository;
+        $this->products = $products;
     }
 
     public function generateFor(CustomerId $customerId)
     {
-        $products = $this->productRepository->getProductsFor($customerId);
+        $products = $this->products->belongingTo($customerId);
 
         //...
     }

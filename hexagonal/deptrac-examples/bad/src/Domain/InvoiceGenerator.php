@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Domain;
 
-use Infrastructure\MySQL\MySQLProductRepository;
+use Infrastructure\MySQL\MySQLProducts;
 
 final class InvoiceGenerator
 {
     private $productRepository;
 
-    public function __construct(MySQLProductRepository $productRepository)
+    public function __construct(MySQLProducts $productRepository)
     {
         $this->productRepository = $productRepository;
     }

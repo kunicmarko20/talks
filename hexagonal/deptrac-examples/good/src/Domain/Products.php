@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-interface ProductRepository
+namespace Domain;
+
+interface Products
 {
     public function getProductsFor(CustomerId $customerId): array;
 }
-
-

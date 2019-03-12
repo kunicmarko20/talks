@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-final class MySQLProductRepository implements ProductRepository
+final class MySQLProducts implements ProductRepository
 {
     private $connection;
 
@@ -11,7 +11,7 @@ final class MySQLProductRepository implements ProductRepository
         $this->connection = $connection;
     }
 
-    public function getProductsFor(CustomerId $customerId): array
+    public function belongingTo(CustomerId $customerId): array
     {
         $statement = $this->connection->prepare(
             <<<SQL
